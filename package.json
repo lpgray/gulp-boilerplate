@@ -1,0 +1,16 @@
+{
+  "name": "gulp-boilerplate",
+  "version": "1.0.0",
+  "description": "A web project boilerplate by gulp.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "boilerplate",
+    "gulp",
+    "template"
+  ],
+  "author": "zhangyang",
+  "license": "ISC"
+}
