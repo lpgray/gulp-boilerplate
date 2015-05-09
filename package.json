@@ -1,16 +1,18 @@
 {
   "name": "gulp-boilerplate",
   "version": "1.0.0",
-  "description": "A web project boilerplate by gulp.",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "description": "A web front-end boilerplate by gulp.",
   "keywords": [
     "boilerplate",
     "gulp",
     "template"
   ],
   "author": "zhangyang",
-  "license": "ISC"
+  "email": "px.zhangyang@gmail.com",
+  "devDependencies": {
+    "browser-sync": "^2.7.1",
+    "gulp": "^3.8.11",
+    "gulp-file-include": "^0.9.0",
+    "gulp-less": "^3.0.3"
+  }
 }

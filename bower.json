@@ -1,0 +1,19 @@
+{
+    "name": "gulp-boilerplate",
+    "version": "1.0.0",
+    "authors": [
+        "zhangyang <zhangyang@gmail.com>"
+    ],
+    "description": "A web front-end boilerplate by gulp.",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ],
+    "devDependencies": {
+        "less": "~2.4.0"
+    },
+    "private": true
+}
