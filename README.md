@@ -47,3 +47,5 @@ After this, you will get a folder named `serve`, this is the server root path.
     gulp build
 
 You will get a folder named `dist`, well done.
+
+> gulp build command must run after serve.
