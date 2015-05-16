@@ -21,7 +21,7 @@ gulp.task('include', function() {
 });
 
 gulp.task('less', function() {
-    gulp.src('./src/less/**/*.less')
+    gulp.src('./src/less/app.less')
     .pipe(less())
     .pipe(gulp.dest(serveFolder + '/css'))
     .pipe(browserSync.reload({stream : true})) // http://www.browsersync.io/docs/gulp/
