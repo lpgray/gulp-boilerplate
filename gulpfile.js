@@ -29,7 +29,12 @@ gulp.task('less', function() {
 
 gulp.task('serve', ['include', 'less', 'imagemin', 'copyjs'], function(){
     browserSync.init({ // http://www.browsersync.io/docs/gulp/
-        server: serveFolder
+        server: {
+            baseDir: serveFolder,
+            routes: {
+                "/bower_components": "bower_components"
+            }
+        }
     });
 
     gulp.watch('./src/**/*.html', ['include']);
