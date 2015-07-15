@@ -63,7 +63,7 @@ gulp.task('rev', ['compress'], function(){
 gulp.task('imagemin', function(){
     return gulp.src('src/img/*')
     .pipe(imageMin({
-        progressive: false
+        progressive: true
     }))
     .pipe(gulp.dest(serveFolder + '/img'))
 });
