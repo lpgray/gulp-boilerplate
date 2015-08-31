@@ -61,7 +61,7 @@ gulp.task('rev', ['compress'], function(){
 });
 
 gulp.task('imagemin', function(){
-    return gulp.src('src/img/*')
+    return gulp.src('src/img/**/*')
     .pipe(imageMin({
         progressive: true
     }))
@@ -80,7 +80,7 @@ gulp.task('minify', function() {
 });
 
 gulp.task('copyimg', function(){
-    gulp.src(serveFolder + '/img/*')
+    gulp.src(serveFolder + '/img/**/*')
         .pipe(gulp.dest(tmp + '/img'))
 });
 
