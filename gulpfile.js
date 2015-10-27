@@ -8,6 +8,8 @@ var uglify = require('gulp-uglify');
 var concat = require('gulp-concat');
 var minify = require('gulp-minify-css');
 var rimraf = require('gulp-rimraf');
+var postcss = require('gulp-postcss');
+var autoprefixer = require('autoprefixer');
 
 // Folder name config
 var serveFolder = './serve';
@@ -23,6 +25,7 @@ gulp.task('include', function() {
 gulp.task('less', function() {
     gulp.src('./src/less/app.less')
     .pipe(less())
+    .pipe(postcss([autoprefixer]))
     .pipe(gulp.dest(serveFolder + '/css'))
     .pipe(browserSync.reload({stream : true})) // http://www.browsersync.io/docs/gulp/
 });

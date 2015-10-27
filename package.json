@@ -19,6 +19,8 @@
     "gulp-minify-css": "*",
     "gulp-rev-all": "*",
     "gulp-rimraf": "*",
-    "gulp-uglify": "*"
+    "gulp-uglify": "*",
+    "gulp-postcss": "^6.0.0",
+    "autoprefixer": "^6.0.0"
   }
 }
