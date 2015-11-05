@@ -11,45 +11,55 @@ var rimraf = require('gulp-rimraf');
 var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer');
 
-// Folder name config
+// 输出文件夹配置
 var serveFolder = './serve';
 var distFolder = './dist';
 var tmp = './_tmp';
 
 gulp.task('include', function() {
     gulp.src('./src/*.html')
-    .pipe(fileInclude())// https://github.com/coderhaoxin/gulp-file-include
-    .pipe(gulp.dest(serveFolder))
+    .pipe(fileInclude()) // https://github.com/coderhaoxin/gulp-file-include
+    .pipe(gulp.dest(serveFolder));
 });
 
-gulp.task('less', function() {
+gulp.task('lessc', function() {
     gulp.src('./src/less/app.less')
     .pipe(less().on('error', console.log))
     .pipe(postcss([autoprefixer]))
+    .pipe(minify({
+        keepBreaks: true
+    }))
     .pipe(gulp.dest(serveFolder + '/css'))
-    .pipe(browserSync.reload({stream : true})) // http://www.browsersync.io/docs/gulp/
+    .pipe(browserSync.reload({stream : true})); // http://www.browsersync.io/docs/gulp/
 });
 
-gulp.task('serve', ['include', 'less', 'imagemin', 'copyjs'], function(){
+gulp.task('serve', ['include', 'lessc', 'imagemin', 'copyjs', 'copylib'], function(){
     browserSync.init({ // http://www.browsersync.io/docs/gulp/
         server: {
             baseDir: serveFolder,
-            routes: {
-                "/bower_components": "bower_components"
-            }
+            // routes: {
+            //     "/lib": "lib"
+            // }
         }
     });
 
     gulp.watch('./src/**/*.html', ['include']);
-    gulp.watch('./src/less/**/*.less', ['less']);
+    gulp.watch('./src/**/*.less', ['lessc']);
     gulp.watch('./src/js/**/*.js', ['copyjs']);
-    gulp.watch(serveFolder + '/*.html').on('change', browserSync.reload);
-    gulp.watch(serveFolder + '/js/**/*.js').on('change', browserSync.reload);
+    gulp.watch('./src/lib/**/*.js', ['copylib']);
+    gulp.watch('./src/img/**/*', ['imagemin']);
+    gulp.watch(serveFolder + '/**/*.html').on('change', browserSync.reload);
+    gulp.watch(serveFolder + '/**/*.js').on('change', browserSync.reload);
 });
 
 gulp.task('copyjs', function(){
     gulp.src('./src/js/**/*.js')
-        .pipe(gulp.dest(serveFolder + '/js'))
+        .pipe(gulp.dest(serveFolder + '/js'));
+});
+
+gulp.task('copylib', function(){
+    gulp.src('./src/lib/**/*')
+        .pipe(gulp.dest(serveFolder + '/lib'));
 });
 
 gulp.task('rev', ['compress'], function(){
@@ -60,7 +70,7 @@ gulp.task('rev', ['compress'], function(){
     .pipe(revAll.manifestFile())
     .pipe(gulp.dest(distFolder))
     .pipe(revAll.versionFile())
-    .pipe(gulp.dest(distFolder))
+    .pipe(gulp.dest(distFolder));
 });
 
 gulp.task('imagemin', function(){
@@ -68,10 +78,10 @@ gulp.task('imagemin', function(){
     .pipe(imageMin({
         progressive: true
     }))
-    .pipe(gulp.dest(serveFolder + '/img'))
+    .pipe(gulp.dest(serveFolder + '/img'));
 });
 
-gulp.task('compress', ['minify', 'uglify', 'copyimg'])
+gulp.task('compress', ['minify', 'uglify', 'copyimg']);
 
 gulp.task('minify', function() {
     gulp.src(serveFolder + '/css/**/*.css')
@@ -84,7 +94,7 @@ gulp.task('minify', function() {
 
 gulp.task('copyimg', function(){
     gulp.src(serveFolder + '/img/**/*')
-        .pipe(gulp.dest(tmp + '/img'))
+        .pipe(gulp.dest(tmp + '/img'));
 });
 
 gulp.task('uglify', function() {
@@ -100,10 +110,10 @@ gulp.task('uglify', function() {
 
 gulp.task('build', ['rev'], function(){
     gulp.src(tmp)
-        .pipe(rimraf())
+        .pipe(rimraf());
 });
 
 gulp.task('clean', function() {
     gulp.src([tmp, distFolder, serveFolder])
-        .pipe(rimraf())
-})
+        .pipe(rimraf());
+});
