@@ -2,15 +2,22 @@
 // Base – Mixins
 // ==========================================================================
 .h (@height) {
-    @remValue: @height / 16;
-    @pxValue: (@height);
-    height: ~"@{pxValue}px";
-    height: ~"@{remValue}rem";
+  @remValue: @height / 16;
+  @pxValue: (@height);
+  height: ~"@{pxValue}px";
+  height: ~"@{remValue}rem";
+}
+
+.w (@size) {
+  @remValue: @size / 16;
+  @pxValue: (@size);
+  width: ~"@{size}px";
+  width: ~"@{size}rem";
 }
 
 // Font sizes (primary sizing in `rem` units with a fallback of `px`)
 // Example usage .font-size(18);
-.font-size (@size) {
+.fs (@size) {
   @remValue: @size / 16;
   @pxValue: (@size);
   font-size: ~"@{pxValue}px";
@@ -19,7 +26,7 @@
 
 // Line height sizes (primary sizing in `rem` units with a fallback of `px`)
 // Example usage .line-height(22);
-.line-height (@size) {
+.lh (@size) {
   @remValue: @size / 16;
   @pxValue: (@size);
   line-height: ~"@{pxValue}px";
