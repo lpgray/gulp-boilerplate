@@ -11,8 +11,13 @@
 .w (@size) {
   @remValue: @size / 16;
   @pxValue: (@size);
-  width: ~"@{size}px";
-  width: ~"@{size}rem";
+  width: ~"@{pxValue}px";
+  width: ~"@{remValue}rem";
+}
+
+.bgCover(@src) {
+  background: transparent url(@src) center center no-repeat;
+  background-size: cover;
 }
 
 // Font sizes (primary sizing in `rem` units with a fallback of `px`)
@@ -24,6 +29,10 @@
   font-size: ~"@{remValue}rem";
 }
 
+.font-size(@size) {
+  .fs(@size);
+}
+
 // Line height sizes (primary sizing in `rem` units with a fallback of `px`)
 // Example usage .line-height(22);
 .lh (@size) {
@@ -31,6 +40,10 @@
   @pxValue: (@size);
   line-height: ~"@{pxValue}px";
   line-height: ~"@{remValue}rem";
+}
+
+.line-height(@size) {
+  .lh(@size)
 }
 
 // Border Radius
