@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <title>h5shop管理平台</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  @@include('../templates/styles.html')
+</head>
+<body>
+  <div class="content">
+    <div class="wrap">
+      @@include('../templates/header.html')
+      @@include('../templates/navbar.html', {"partners" : "active"})
+
+      <div class="comm-board">
+        <div class="inner">
+          <div class="title">
+            <h1>合作伙伴</h1>
+          </div>
+          <div class="board-body">
+            <!-- @@include('../templates/board-section-title.html', {"sectionTitle" : "合作伙伴"}) -->
+            <div class="form-normal-opt">添加条目</div>
+            <div class="cards">
+              <div class="card">
+                <div class="pic"></div>
+                <div class="desc">中国电信</div>
+                <div class="opt">
+                  <div class="button">编辑</div>
+                  <div class="danger-opt">删除</div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="pic"></div>
+                <div class="desc">中国电信</div>
+                <div class="opt">
+                  <div class="button">编辑</div>
+                  <div class="danger-opt">删除</div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="pic"></div>
+                <div class="desc">中国电信</div>
+                <div class="opt">
+                  <div class="button">编辑</div>
+                  <div class="danger-opt">删除</div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="pic">
+                  <div class="pic-upload"></div>
+                </div>
+                <div class="desc">
+                  <textarea name="" id="" cols="30" rows="10"></textarea>
+                </div>
+                <div class="opt">
+                  <div class="button">保存</div>
+                </div>
+              </div>
+            </div>
+            <div class="desc-text"></div>
+          </div>
+        </div>
+      </div>
+
+      @@include('../templates/footer.html')
+    </div>
+  </div>
+  @@include('../templates/scripts.html')
+</body>
+</html>

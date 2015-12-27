@@ -4,8 +4,8 @@
 
 // Custom Buttons
 .button {
-  border: 1px solid #d7d7d7;
-  background-color: #f3f3f3;
+  border: 1px solid transparent;
+  background-color: @main;
   line-height: normal;
   padding: .5em 1em;
   text-decoration: none;
@@ -14,8 +14,11 @@
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
   transition: all 0.3s;
+  color: @white;
+  border-radius: 2px;
+  cursor: pointer;
   &:hover, &:active { text-decoration: none; }
-  &:hover { background: #f9f9f9; }
+  &:hover { background: lighten(@main, 10%);; }
 }
 .button-primary {
   // Add your styles here

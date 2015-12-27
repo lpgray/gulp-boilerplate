@@ -1,0 +1,89 @@
+.profile {
+  position: absolute;
+  top: 1rem;
+  right: 2rem;
+  .avatar {
+    display: inline-block;
+    margin-left: .5rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background-color: #FFF;
+    overflow: hidden;
+    vertical-align: middle;
+    position: relative;
+    &:hover {
+      opacity: .8;
+    }
+    &:active {
+      opacity: 1;
+      &:after {
+        width: 100%;
+        height: 100%;
+        content: " ";
+        background-color:rgba(0,0,0,.3);
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    }
+  }
+}
+.profile-menu {
+  position: absolute;
+  right: .9rem;
+  top: 3.4rem;
+  opacity: 0;
+  visibility: hidden;
+  .fs(12);
+  .anchor {
+    width: 0;
+    height: 0;
+    border-bottom: 7px solid #ececec;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    position: absolute;
+    top: -6px;
+    right: 4px;
+    &:after {
+      content: " ";
+      width: 0;
+      height: 0;
+      border-bottom: 6px solid #fff;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      position: absolute;
+      left: -6px;
+      top: 1px;
+    }
+  }
+  .menu {
+    background-color: #fff;
+    border-radius: 2px;
+    border: 1px solid #ececec;
+    box-shadow: 0 1px 3px #ececec;
+    overflow: hidden;
+    a {
+      display: block;
+      width: 7rem;
+      color: @gray;
+      line-height: 3;
+      &:hover {
+        background-color: #f5f5f5;
+      }
+      &:active {
+        background-color: #eee;
+      }
+    }
+    .wgt-icon {
+      display: inline-block;
+      width: 2.6rem;
+      text-align: center;
+    }
+  }
+  &.on {
+    opacity: 1;
+    visibility: visible;
+    transition: all .2s ease;
+  }
+}

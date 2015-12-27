@@ -17,7 +17,7 @@ var distFolder = './dist';
 var tmp = './_tmp';
 
 gulp.task('include', function() {
-  gulp.src('./src/*.html')
+  gulp.src(['./src/**/*.html', '!./src/templates/**/*.html'])
   .pipe(fileInclude()) // https://github.com/coderhaoxin/gulp-file-include
   .pipe(gulp.dest(serveFolder));
 });

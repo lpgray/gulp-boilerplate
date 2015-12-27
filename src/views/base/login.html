@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <title>大圣管理后台</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  @@include('../templates/styles.html')
+</head>
+<body>
+  <div class="content">
+    <div class="wrap">
+      <div class="login-form">
+        <div class="avatar" style="background-image:url(../../img/logo.svg)">
+        </div>
+        <h1 class="logo">大圣软件</h1>
+        <h2 class="slogen">更专业的IT服务提供商 <a href="http://www.dsartisan.com" target="_blank">www.dsartisan.com</a></h2>
+        <form class="form" action="/">
+          <div class="form-group">
+            <input type="text" placeholder="邮箱">
+          </div>
+          <div class="form-group">
+            <input type="password" placeholder="密码">
+          </div>
+          <!-- <div class="form-group tc form-link"><a href="#">立即注册</a></div> -->
+          <div class="form-group tc">
+            <button class="button">登录</button>
+          </div>
+        </form>
+      </div>
+      @@include('../templates/footer.html')
+    </div>
+  </div>
+  @@include('../templates/scripts.html')
+</body>
+</html>

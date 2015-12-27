@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <title>h5shop管理平台</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  @@include('../templates/styles.html')
+</head>
+<body>
+  <div class="content">
+    <div class="wrap">
+      @@include('../templates/header.html')
+      @@include('../templates/navbar.html', {"msg" : "active"})
+
+      <div class="comm-board">
+        <div class="inner">
+          <div class="title">
+            <h1>消息提醒</h1>
+          </div>
+          <div class="board-body">
+            <div class="msg-body">
+              <!-- <div class="msg-card">
+                <p class="body">
+                  <span class="msg-type-sys">系统提示：</span>欢迎使用h5shop，为你定义最完美的互联网平台，5分钟打造适用于手机、平板电脑、PC的网站。
+                </p>
+                <div class="info">
+                  <span class="time">7月3日 04:35</span>
+                </div>
+                <span class="danger-opt">删除此条</span>
+              </div> -->
+              <div class="msg-card">
+                <p class="body"><span class="msg-type-normal">用户反馈：</span>我对你们的业务很感兴趣，我这有个需求，请联系下我，微信号：lpgray</p>
+                <div class="info">
+                  <div class="pull-right">
+                    <i class="fa fa-user"></i> 张先生&nbsp;&nbsp;&nbsp;
+                    <i class="fa fa-envelope"></i> <a href="#">px.zhangyang@gmail.com</a>&nbsp;&nbsp;&nbsp;
+                    <i class="fa fa-phone"></i> <a href="#">18260008278</a>
+                  </div>
+                  <span class="time">7月3日 04:35</span>
+                </div>
+                <span class="danger-opt">删除此条</span>
+              </div>
+              <div class="msg-card">
+                <p class="body"><span class="msg-type-normal">用户反馈：</span>我对你们的业务很感兴趣，我这有个需求，请联系下我，微信号：lpgray</p>
+                <div class="info">
+                  <div class="pull-right">
+                    <i class="fa fa-user"></i> 张先生&nbsp;&nbsp;&nbsp;
+                    <i class="fa fa-envelope"></i> <a href="#">px.zhangyang@gmail.com</a>&nbsp;&nbsp;&nbsp;
+                    <i class="fa fa-phone"></i> <a href="#">18260008278</a>
+                  </div>
+                  <span class="time">7月3日 04:35</span>
+                </div>
+                <span class="danger-opt">删除此条</span>
+              </div>
+              <div class="tc desc-text">没有更多了</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      @@include('../templates/footer.html')
+    </div>
+  </div>
+  @@include('../templates/scripts.html')
+</body>
+</html>

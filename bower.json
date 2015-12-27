@@ -14,6 +14,8 @@
   ],
   "private": true,
   "dependencies": {
-    "base": "~2.6.1"
+    "base": "~2.6.1",
+    "font-awesome": "fontawesome#~4.5.0",
+    "jquery": "~2.1.4"
   }
 }

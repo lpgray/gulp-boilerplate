@@ -1,0 +1,43 @@
+.msg-body {
+  width: 600px;
+  padding-bottom: 1rem;
+  .fs(14);
+}
+.msg-card {
+  border-bottom: 1px solid @bc-2;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  position: relative;
+  .lh(20);
+  & > p {
+    margin: 0;
+  }
+  .body {
+    color: @main;
+  }
+  .info {
+    color: @lightgray;
+    margin-top: 1rem;
+    & > .pull-right,
+    & > .time {
+      .fs(12);
+    }
+  }
+  .danger-opt {
+    position: absolute;
+    left: 6rem;
+    bottom: 1rem;
+    display: none;
+  }
+  &:hover {
+    .danger-opt {
+      display: block;
+    }
+  }
+}
+.msg-type-sys {
+  color: #f00;
+}
+.msg-type-normal {
+  color: @black;
+}

@@ -1,0 +1,32 @@
+.comm-board {
+  margin-left : 200px;
+  width: 1000px;
+  .inner {
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+  .inner-narrow {
+    width: 400px;
+  }
+  & > .inner > .title {
+    padding: 0;
+    margin: 2rem 0;
+    h1 {
+      .fs(16);
+      margin: 0;
+      line-height: 1;
+      color: @black;
+      display: inline-block;
+    }
+  }
+}
+
+.board-body {
+  line-height: 1;
+  margin-top: -6px;
+  & > .title {
+    .fs(16);
+    margin: 0 .5rem 0 0;
+    color: @main;
+  }
+}

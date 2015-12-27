@@ -1,22 +1,49 @@
 // ==========================================================================
 // Base – Mixins
 // ==========================================================================
-// Font sizes (primary sizing in `rem` units with a fallback of `px`)
-// Example usage .font-size(18);
-.font-size (@size) {
+.h (@height) {
+  @remValue: @height / 16;
+  @pxValue: (@height);
+  height: ~"@{pxValue}px";
+  height: ~"@{remValue}rem";
+}
+
+.w (@size) {
   @remValue: @size / 16;
   @pxValue: (@size);
-  font-size: ~"@{pxValue}px"; 
+  width: ~"@{pxValue}px";
+  width: ~"@{remValue}rem";
+}
+
+.bgCover(@src) {
+  background: transparent url(@src) center center no-repeat;
+  background-size: cover;
+}
+
+// Font sizes (primary sizing in `rem` units with a fallback of `px`)
+// Example usage .font-size(18);
+.fs (@size) {
+  @remValue: @size / 16;
+  @pxValue: (@size);
+  font-size: ~"@{pxValue}px";
   font-size: ~"@{remValue}rem";
+}
+
+.font-size(@size) {
+  .fs(@size);
 }
 
 // Line height sizes (primary sizing in `rem` units with a fallback of `px`)
 // Example usage .line-height(22);
-.line-height (@size) {
+.lh (@size) {
   @remValue: @size / 16;
   @pxValue: (@size);
-  line-height: ~"@{pxValue}px"; 
+  line-height: ~"@{pxValue}px";
   line-height: ~"@{remValue}rem";
+}
+
+.line-height(@size) {
+  .lh(@size)
 }
 
 // Border Radius

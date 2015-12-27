@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <title>大圣管理后台</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  @@include('../templates/styles.html')
+</head>
+<body>
+  <div class="content">
+    <div class="wrap">
+      @@include('../templates/header.html')
+      @@include('../templates/navbar.html', {"carousel" : "active"})
+
+      <div class="comm-board">
+        <div class="inner">
+          <div class="title">
+            <h1>图片轮播</h1>
+          </div>
+          <div class="carousel-board">
+            <div class="carousel">
+              <div class="carousel-inner" style="width:1440px;">
+                <div class="carousel-item" style="background-image:url(../../img/carousel/h5shop-banner.jpeg);width:480px;">
+                  <div class="carousel-item-inner">
+                    <div class="carousel-item-words">
+                      <h1>大圣轻松打造高大上的网站</h1>
+                      <h2>快速搭建你的跨终端网站，无论是手机、平板还是PC，表现的都很出色。</h2>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item" style="background-image:url(../../img/carousel/h5shop-banner2.jpg);width:480px;">
+                  <div class="carousel-item-inner">
+                    <div class="carousel-item-words">
+                      <h1>大圣轻松打造高大上的网站</h1>
+                      <h2>快速搭建你的跨终端网站，无论是手机、平板还是PC，表现的都很出色。</h2>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item" style="background-image:url(../../img/carousel/h5shop-banner3.jpg);width:480px;">
+                  <div class="carousel-item-inner">
+                    <div class="carousel-item-words">
+                      <h1>大圣轻松打造高大上的网站</h1>
+                      <h2>快速搭建你的跨终端网站，无论是手机、平板还是PC，表现的都很出色。</h2>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="left trigger">
+                <i class="fa fa-angle-left"></i>
+              </div>
+              <div class="right trigger">
+                <i class="fa fa-angle-right"></i>
+              </div>
+            </div>
+
+            <div class="carousel-right">
+              <div class="comm-form">
+                <div class="title">
+                  幻灯编辑
+                  <div class="pull-right">
+                    <span class="form-normal-opt">添加</span>
+                  </div>
+                </div>
+                <div class="body">
+                  <div class="form-group">
+                    <div class="label">幻灯顺序：</div>
+                    <div class="input">
+                      <div class="form-danger-opt pull-right">删除此项</div>
+                      <div class="carousel-sort">
+                        <span class="item active" style="background-image:url(../../img/carousel/h5shop-banner.jpeg);"></span>
+                        <span class="item" style="background-image:url(../../img/carousel/h5shop-banner2.jpg);"></span>
+                        <span class="item" style="background-image:url(../../img/carousel/h5shop-banner3.jpg);"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="form-text">拖动可排序</div>
+                  </div>
+                  <div class="form-group">
+                    <div class="label">标题文字：</div>
+                    <div class="input"><input type="text"></div>
+                  </div>
+                  <div class="form-group">
+                    <div class="label">副标题文字：</div>
+                    <div class="input"><input type="text"></div>
+                  </div>
+                  <div class="form-group">
+                    <div class="form-text">主标题最多允许15个中文字，副标题30个</div>
+                  </div>
+                  <div class="form-action">
+                    <div class="button">保存</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      @@include('../templates/footer.html')
+    </div>
+  </div>
+  @@include('../templates/scripts.html')
+</body>
+</html>

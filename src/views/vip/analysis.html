@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <title>h5shop管理平台</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  @@include('../templates/styles.html')
+</head>
+<body>
+  <div class="content">
+    <div class="wrap">
+      @@include('../templates/header.html')
+      @@include('../templates/navbar.html', {"analysis" : "active"})
+
+      <div class="board">
+        <div class="inner">
+          <div class="title">
+            <h1>访问统计</h1>
+          </div>
+          <div class="board-body">
+            <div class="tr wgt-radios mb10">
+              <span class="item active" data-cbk="weekly">按周查看</span>
+              <span class="item" data-cbk="monthly">按月查看</span>
+            </div>
+            <canvas id="myChart" style="width: 100%;height: 300px;"></canvas>
+          </div>
+        </div>
+      </div>
+
+      @@include('../templates/footer.html')
+    </div>
+  </div>
+  @@include('../templates/scripts.html')
+  <script src="bower_components/Chart.js/Chart.min.js"></script>
+  <script>
+  Chart.defaults.global = $.extend(Chart.defaults.global, {
+    animationEasing : 'easeOutBounce',
+    scaleFontColor: "#aaa"
+  });
+  var ctx = document.getElementById("myChart").getContext("2d");
+  var dataWeekly = {
+    labels: ["7月5日", "7月6日", "7月7日", "7月8日", "7月9日", "7月10日", "7月11日"],
+    datasets: [
+      {
+        label: "访问量统计",
+        fillColor: "rgba(151,187,205,0.2)",
+        strokeColor: "rgba(151,187,205,1)",
+        pointColor: "rgba(151,187,205,1)",
+        pointStrokeColor: "#fff",
+        pointHighlightFill: "#fff",
+        pointHighlightStroke: "rgba(151,187,205,1)",
+        data: [65, 0, 0, 0, 0, 0, 0]
+      }
+    ]
+  };
+  var dataMonthly = {
+    labels: ["1月", "2月", "3月", "4月", "5月", "6月", "7月"],
+    datasets: [
+      {
+        label: "访问量统计",
+        fillColor: "rgba(151,187,205,0.2)",
+        strokeColor: "rgba(151,187,205,1)",
+        pointColor: "rgba(151,187,205,1)",
+        pointStrokeColor: "#fff",
+        pointHighlightFill: "#fff",
+        pointHighlightStroke: "rgba(151,187,205,1)",
+        data: [40, 65, 76, 87, 90, 111, 121]
+      }
+    ]
+  };
+  var myNewChart = new Chart(ctx).Line(dataWeekly);
+  var wgtRadiosCbks = {
+    weekly : function(){
+      myNewChart.destroy();
+      myNewChart = new Chart(ctx).Line(dataWeekly);
+    },
+    monthly : function() {
+      myNewChart.destroy();
+      myNewChart = new Chart(ctx).Line(dataMonthly);
+    }
+  }
+  </script>
+</body>
+</html>
