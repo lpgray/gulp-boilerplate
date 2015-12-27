@@ -1,7 +1,7 @@
 {
-  "name": "ds-module-admin",
-  "version": "1.0.0",
-  "description": "dasheng module admin",
+  "name": "gulp-boilerplate",
+  "version": "1.1.0",
+  "description": "A web front-end boilerplate by gulp.",
   "keywords": [
     "boilerplate",
     "gulp",

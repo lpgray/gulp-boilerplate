@@ -1,38 +1,3 @@
-@main: #5b7081;
-@blue: #239ae3;
-@black: #293743;
-@red: #ec1561;
-@orange: #ff9939;
-@green: #2bab51;
-@lightgray: #aaa;
-@bc: #ced9e0;
-@bc-2: #eee;
-@bg: #f5f8fa;
-@gray: #888;
-@white: #fff;
-
 @import "../lib/base/src/less/style";
 
-.clearfix(){
-  &:before,
-  &:after {
-    content: " "; // 1
-    display: table; // 2
-  }
-  &:after {
-    clear: both;
-  }
-}
-
-@import "comm/comm";
-@import "comm/navbar";
-@import "comm/board";
-@import "comm/form";
-@import "comm/profile";
-@import "comm/card";
-
-@import "cpnts/pages";
-
-@import "pages/carousel";
-@import "pages/login";
-@import "pages/msg";
+@import "cpnt/header";
