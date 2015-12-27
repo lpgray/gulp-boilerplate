@@ -17,7 +17,7 @@ var distFolder = './dist';
 var tmp = './_tmp';
 
 gulp.task('include', function() {
-  gulp.src(['./src/**/*.html', '!./src/templates/**/*.html'])
+  gulp.src('./src/*.html')
   .pipe(fileInclude()) // https://github.com/coderhaoxin/gulp-file-include
   .pipe(gulp.dest(serveFolder));
 });
@@ -62,9 +62,15 @@ gulp.task('copylib', function(){
   .pipe(gulp.dest(serveFolder + '/lib'));
 });
 
-gulp.task('copylib-dist', function(){
-  gulp.src(serveFolder + '/lib/**/*')
-  .pipe(gulp.dest(distFolder + '/lib'));
+gulp.task('rev', ['compress'], function(){
+  var revAll = new RevAll();  // https://www.npmjs.com/package/gulp-rev-all
+  gulp.src(tmp + '/**')
+  .pipe(revAll.revision())
+  .pipe(gulp.dest(distFolder))
+  .pipe(revAll.manifestFile())
+  .pipe(gulp.dest(distFolder))
+  .pipe(revAll.versionFile())
+  .pipe(gulp.dest(distFolder));
 });
 
 gulp.task('imagemin', function(){
@@ -75,49 +81,39 @@ gulp.task('imagemin', function(){
   .pipe(gulp.dest(serveFolder + '/img'));
 });
 
-gulp.task('rev', ['compress'], function(){
-  var revAll = new RevAll({dontRenameFile : ['.html']});  // https://www.npmjs.com/package/gulp-rev-all
-  return gulp.src(tmp + '/**')
-    .pipe(revAll.revision())
-    .pipe(gulp.dest(distFolder));
-});
-
-gulp.task('compress', ['minify', 'uglify', 'copyimg', 'copyhtml', 'copylib-dist']);
+gulp.task('compress', ['minify', 'uglify', 'copyimg']);
 
 gulp.task('minify', function() {
-  return gulp.src(serveFolder + '/css/**/*.css')
-    .pipe(concat('app.css'))
-    .pipe(minify({
-      keepBreaks : true
-    }))
-    .pipe(gulp.dest(tmp + '/css'));
+  gulp.src(serveFolder + '/css/**/*.css')
+  .pipe(concat('app.css'))
+  .pipe(minify({
+    keepBreaks : true
+  }))
+  .pipe(gulp.dest(tmp + '/css'));
 });
 
 gulp.task('copyimg', function(){
-  return gulp.src(serveFolder + '/img/**/*')
-    .pipe(gulp.dest(tmp + '/img'));
-});
-
-gulp.task('copyhtml', function(){
-  return gulp.src(serveFolder + '/*.html')
-    .pipe(gulp.dest(tmp));
+  gulp.src(serveFolder + '/img/**/*')
+  .pipe(gulp.dest(tmp + '/img'));
 });
 
 gulp.task('uglify', function() {
-  return gulp.src(serveFolder + '/js/**/*.js')
-    .pipe(concat('app.js'))
-    .pipe(uglify({
-      compress : {
-        drop_console : true
-      }
-    }))
-    .pipe(gulp.dest(tmp + '/js'));
+  gulp.src(serveFolder + '/js/**/*.js')
+  .pipe(concat('app.js'))
+  .pipe(uglify({
+    compress : {
+      drop_console : true
+    }
+  }))
+  .pipe(gulp.dest(tmp + '/js'));
 });
 
 gulp.task('build', ['rev'], function(){
-  return gulp.src(tmp).pipe(rimraf());
+  gulp.src(tmp)
+  .pipe(rimraf());
 });
 
 gulp.task('clean', function() {
-  return gulp.src([tmp, distFolder, serveFolder]).pipe(rimraf());
+  gulp.src([tmp, distFolder, serveFolder])
+  .pipe(rimraf());
 });
