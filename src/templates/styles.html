@@ -1,7 +1,10 @@
 <link rel="stylesheet" href="css/app.css">
 <script>
 (function(){
-    var scale = window.innerWidth / 320 * 100;
-    document.getElementsByTagName('html')[0].style.fontSize = scale + '%';
+  // 缩放
+  var width = window.innerWidth > screen.width ? screen.width : window.innerWidth;
+  var scale = width / 320 * 100;
+  if (scale > 110) scale -= 10;
+  document.getElementsByTagName('html')[0].style.fontSize = scale + '%';
 }());
 </script>
