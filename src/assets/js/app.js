@@ -1,11 +1,10 @@
 (function(){
-    'use strict';
+  'use strict';
 
-    // 基础宽度 320px 最大支持到 414px
-    var scale = parseInt((window.innerWidth / 320) * 100);
-    if (scale > 129) {
-        scale = 129;
-    }
-    document.getElementsByTagName('html')[0].style.fontSize = scale + '%';
+  // 缩放
+  var width = window.innerWidth > screen.width ? screen.width : window.innerWidth;
+  var scale = width / 320 * 100;
+  if (scale > 110) scale -= 10;
+  document.getElementsByTagName('html')[0].style.fontSize = scale + '%';
 
 }());
