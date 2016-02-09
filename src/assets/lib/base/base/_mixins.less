@@ -20,6 +20,34 @@
   background-size: cover;
 }
 
+.bgContain(@src) {
+  background: transparent url(@src) center center no-repeat;
+  background-size: contain;
+}
+
+.trigger() {
+  &:active {
+    background-color: darken(@wit, 5%);
+  }
+}
+
+.thumnail() {
+  border: 1px solid #eee;
+  .bgCover();
+}
+
+.clearfix() {
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
 // Font sizes (primary sizing in `rem` units with a fallback of `px`)
 // Example usage .font-size(18);
 .fs (@size) {
