@@ -54,8 +54,8 @@ gulp.task('copyjs', function(){
 });
 
 gulp.task('copylib', function(){
-  return gulp.src(['./src/assets/lib', '!./src/assets/lib/base'])
-  .pipe(gulp.dest(serveFolder + '/assets'));
+	return gulp.src('./src/assets/lib/**/*')
+  	.pipe(gulp.dest(serveFolder + '/assets/lib'));
 });
 
 gulp.task('imagemin', function(){
@@ -80,11 +80,6 @@ gulp.task('serve', ['include', 'lessc', 'imagemin', 'copyjs', 'copylib'], functi
   gulp.watch('./src/assets/img/**/*', ['imagemin']);
   gulp.watch([serveFolder + '/**/*.html', '!' + serveFolder + '/assets/**/*.html']).on('change', browserSync.reload);
   gulp.watch(serveFolder + '/assets/**/*.js').on('change', browserSync.reload);
-});
-
-gulp.task('copylib', function(){
-  return gulp.src(['./src/assets/lib', '!./src/assets/lib/base'])
-  .pipe(gulp.dest(serveFolder + '/assets'));
 });
 
 /*-- Build --*/
