@@ -10,6 +10,21 @@ var minify = require('gulp-minify-css');
 var rimraf = require('gulp-rimraf');
 var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer');
+var htmlmin = require('gulp-htmlmin');
+
+var sftp = require('gulp-sftp');
+
+/*-- Sftp upload --*/
+gulp.task('sftp', function () {
+	return gulp.src(['serve/**/*'], {base : 'serve'})
+		.pipe(sftp({
+			host: '120.27.99.119',
+			auth: 'keyMain',
+			remotePath: '/home/wwwroot/gulp-boilerplate'
+		}));
+});
+
+/*-- develop --*/
 
 // 输出文件夹配置
 var serveFolder = './serve';
@@ -67,33 +82,60 @@ gulp.task('serve', ['include', 'lessc', 'imagemin', 'copyjs', 'copylib'], functi
   gulp.watch(serveFolder + '/assets/**/*.js').on('change', browserSync.reload);
 });
 
-// gulp.task('minify', function() {
-//   return gulp.src(serveFolder + '/assets/css/**/*.css')
-//   .pipe(concat('app.css'))
-//   .pipe(minify({
-//     keepBreaks : true
-//   }))
-//   .pipe(gulp.dest(tmp + '/assets/css'));
-// });
-//
-// gulp.task('copyimg', function(){
-//   return gulp.src(serveFolder + '/assets/img/**/*')
-//   .pipe(gulp.dest(tmp + '/assets/img'));
-// });
-//
-// gulp.task('uglify', function() {
-//   return gulp.src(serveFolder + '/assets/js/**/*.js')
-//     .pipe(concat('app.js'))
-//     .pipe(uglify({
-//       compress : {
-//         drop_console : true
-//       }
-//     }))
-//     .pipe(gulp.dest(tmp + '/assets/js'));
-// });
-// gulp.task('rev', ['compress'], function(){
-//   var revAll = new RevAll();  // https://www.npmjs.com/package/gulp-rev-all
-//   return gulp.src(tmp + '/**')
-//     .pipe(revAll.revision())
-//     .pipe(gulp.dest(distFolder));
-// });
+gulp.task('copylib', function(){
+  return gulp.src(['./src/assets/lib', '!./src/assets/lib/base'])
+  .pipe(gulp.dest(serveFolder + '/assets'));
+});
+
+/*-- Build --*/
+gulp.task('copylibtotmp', function(){
+  return gulp.src(['./serve/assets/lib/**/*'], {base : './src/assets'})
+  .pipe(gulp.dest(serveFolder + '/assets'));
+});
+
+gulp.task('minify', function() {
+  return gulp.src(serveFolder + '/assets/css/**/*.css')
+  .pipe(concat('app.css'))
+  .pipe(minify({
+    keepBreaks : true
+  }))
+  .pipe(gulp.dest(tmp + '/assets/css'));
+});
+
+gulp.task('copyimg', function(){
+  return gulp.src(serveFolder + '/assets/img/**/*')
+  .pipe(gulp.dest(tmp + '/assets/img'));
+});
+
+gulp.task('copyhtml', function(){
+  return gulp.src(serveFolder + '/**/*.html')
+		.pipe(htmlmin({collapseWhitespace: true}))
+    .pipe(gulp.dest(tmp));
+});
+
+gulp.task('uglify', function() {
+  return gulp.src(serveFolder + '/assets/js/**/*.js')
+    .pipe(concat('app.js'))
+    .pipe(uglify({
+      compress : {
+        drop_console : true
+      }
+    }))
+    .pipe(gulp.dest(tmp + '/assets/js'));
+});
+
+gulp.task('compress', ['uglify', 'copyimg', 'minify', 'copylibtotmp', 'copyhtml']);
+
+gulp.task('rev', ['compress'], function(){
+  var revAll = new RevAll({
+		dontRenameFile:  ['.html']
+	});  // https://www.npmjs.com/package/gulp-rev-all
+  return gulp.src(tmp + '/**')
+    .pipe(revAll.revision())
+    .pipe(gulp.dest(distFolder));
+});
+
+gulp.task('build', ['rev'], function(){
+  return gulp.src(tmp)
+		.pipe(rimraf());
+});

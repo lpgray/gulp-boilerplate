@@ -10,17 +10,19 @@
   "author": "zhangyang",
   "email": "px.zhangyang@gmail.com",
   "devDependencies": {
+    "autoprefixer": "^6.0.0",
     "browser-sync": "*",
     "gulp": "*",
     "gulp-concat": "*",
     "gulp-file-include": "*",
+    "gulp-htmlmin": "^1.3.0",
     "gulp-imagemin": "*",
     "gulp-less": "*",
     "gulp-minify-css": "*",
+    "gulp-postcss": "^6.0.0",
     "gulp-rev-all": "*",
     "gulp-rimraf": "*",
-    "gulp-uglify": "*",
-    "gulp-postcss": "^6.0.0",
-    "autoprefixer": "^6.0.0"
+    "gulp-sftp": "^0.1.5",
+    "gulp-uglify": "*"
   }
 }
