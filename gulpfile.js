@@ -32,7 +32,7 @@ var distFolder = './dist';
 var tmp = './_tmp';
 
 gulp.task('include', function() {
-  return gulp.src(['./src/**/*.html', '!./src/templates/*.html'])
+  return gulp.src(['./src/**/*.html', '!./src/templates/*.html', '!./src/assets/**/*.html'])
   .pipe(fileInclude()) // https://github.com/coderhaoxin/gulp-file-include
   .pipe(gulp.dest(serveFolder));
 });
@@ -78,7 +78,7 @@ gulp.task('serve', ['include', 'lessc', 'imagemin', 'copyjs', 'copylib'], functi
   gulp.watch('./src/assets/js/**/*.js', ['copyjs']);
   gulp.watch('./src/assets/lib/**/*.js', ['copylib']);
   gulp.watch('./src/assets/img/**/*', ['imagemin']);
-  gulp.watch(serveFolder + '/**/*.html').on('change', browserSync.reload);
+  gulp.watch([serveFolder + '/**/*.html', '!' + serveFolder + '/assets/**/*.html']).on('change', browserSync.reload);
   gulp.watch(serveFolder + '/assets/**/*.js').on('change', browserSync.reload);
 });
 
