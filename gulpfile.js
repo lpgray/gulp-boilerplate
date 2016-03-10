@@ -25,7 +25,6 @@ gulp.task('sftp', function () {
 });
 
 /*-- develop --*/
-
 // 输出文件夹配置
 var serveFolder = './serve';
 var distFolder = './dist';
@@ -54,7 +53,7 @@ gulp.task('copyjs', function(){
 });
 
 gulp.task('copylib', function(){
-  return gulp.src(['./src/assets/lib', '!./src/assets/lib/base'])
+  return gulp.src(['./src/assets/lib/**/*', '!./src/assets/lib/base/**/*'], {base : './src/assets'})
   .pipe(gulp.dest(serveFolder + '/assets'));
 });
 
@@ -70,7 +69,8 @@ gulp.task('serve', ['include', 'lessc', 'imagemin', 'copyjs', 'copylib'], functi
   browserSync.init({ // http://www.browsersync.io/docs/gulp/
     server: {
       baseDir: serveFolder
-    }
+    },
+		notify: false
   });
 
   gulp.watch('./src/**/*.html', ['include']);
@@ -80,11 +80,6 @@ gulp.task('serve', ['include', 'lessc', 'imagemin', 'copyjs', 'copylib'], functi
   gulp.watch('./src/assets/img/**/*', ['imagemin']);
   gulp.watch(serveFolder + '/**/*.html').on('change', browserSync.reload);
   gulp.watch(serveFolder + '/assets/**/*.js').on('change', browserSync.reload);
-});
-
-gulp.task('copylib', function(){
-  return gulp.src(['./src/assets/lib', '!./src/assets/lib/base'])
-  .pipe(gulp.dest(serveFolder + '/assets'));
 });
 
 /*-- Build --*/
